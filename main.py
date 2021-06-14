@@ -53,6 +53,9 @@ class Enemigos(pygame.sprite.Sprite):
             self.rect.left = w
             
 
+
+            
+
 #función para agregar texto dentro
 def escribir(texto,fuente,color,pantalla,x,y):
     textobj = fuente.render(texto, 1,color)
@@ -121,6 +124,99 @@ def menu():
         reloj.tick(60)
 
 
+wscreen=1200
+hscreen=500
+
+w=pygame.display.set_mode((wscreen,hscreen))
+
+#clase para el proyectil 
+
+class bola(object):
+	def __init__(self, x, y, radio, color):
+		self.x=x
+		self.y=y
+		self.radio=radio
+		self.color=color
+
+	def dibujo(self, w):
+		pygame.draw.circle(w, (0,0,0), (self.x, self.y) ,self.radio)
+		pygame.draw.circle(w, self.color, (self.x, self.y) ,self.radio-1)
+	def bola2(startx, starty, power, angulo, tiempo):
+		velocidadx=math.cos(angulo)*power
+		velocidady=math.sin(angulo)*power
+
+		distanciax= velocidadx*tiempo
+		distanciay= (velocidady*tiempo)+((-4.9*(tiempo)**2)/2)
+
+		x2= round(distanciax+startx)
+		y2= round(starty-distanciay)
+
+		return(x2,y2)
+    
+def dibujarventana():
+	w.fill((64,64,64))
+	b1bola.dibujo(w)
+	pygame.draw.line(w, (255,255,255), linea[0], linea[1])
+	pygame.display.update()
+
+def angulo(pos):
+	sx=b1bola.x
+	sy=b1bola.y
+	try:
+		angulo=math.atan((sy-pos[1])/(sx-pos[0]))
+	except:
+		angulo=math.pi/2
+
+	if pos[1]<sy and pos[0]>sx:
+		angulo=abs(angulo)
+	elif pos[1]<sy and pos[0]<sx:
+		angulo=math.pi-angulo
+	elif pos[1]>sy and pos[0]<sx:
+		angulo=math.pi+ abs(angulo)
+	elif pos[1]>sy and pos[0]>sx:
+		angulo=(math.pi*2)-angulo
+
+	return angulo
+b1bola= bola(300, 494, 5, (255,255,255))
+
+x=0
+y=0
+tiempo=0
+power=0
+angulo1=0
+tiro=False
+
+
+mover=True
+while mover:
+
+	if tiro:
+		if b1bola.y<500-b1bola.radio:
+			tiempo+=0.05
+			po=bola.bola2(x,y,power,angulo1,tiempo)
+			b1bola.x=po[0]
+			b1bola.y=po[1]
+		else:
+			tiro=False
+			b1bola.y=494
+
+	pos=pygame.mouse.get_pos()
+	linea=[(b1bola.x, b1bola.y), pos]
+	dibujarventana()
+	for event in pygame.event.get():
+		if event.type == pygame.QUIT:
+			mover=False
+		if event.type==pygame.MOUSEBUTTONDOWN:
+		 	if tiro==False:
+		 		tiro=True
+		 		x= b1bola.x
+		 		y= b1bola.y
+		 		tiempo=0
+		 		power= math.sqrt((linea[1][1]-linea[0][1])**2+(linea[1][0]-linea[0][0])**2)/8
+		 		angulo1= angulo(pos)
+
+
+pygame.quit()
 
 #función juego
 def game():

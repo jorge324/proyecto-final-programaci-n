@@ -452,3 +452,33 @@ menu()
 #B. la suma de las fuerzas es proporcional al producto de las masas y la aceleración del sistema
 #C. la fuerza de gravedad es proporcional al cociente del producto de las masas y la constante de gravedad universal, sobre la distancia entre los cuerpos
 #D. un cuerpo que se encuentra en reposo o en movimiento rectilíneo uniforme sólo cambiará su estado si se le aplica una fuerza
+
+#9.1 Cómo se llama el instrumento que mide y registra la humedad relativa del aire?
+#A.Barómetro
+#B.Hidrómetro
+#C.Higrómetro
+
+
+#10.1 ¿Qué dos partículas elementales se describen como 'sin masa'?
+#A.Fotón y gluón
+#B.Muón y neutrino
+#C.Electrón y protón
+
+#11.1 ¿Cómo se llama el tipo de materia que no emite ningún tipo de radiación electromagnética?
+
+#A.La materia oscura
+#B.Materia electromagnetica
+#C.Materia riadioactiva
+
+
+#12.1 La presión del aire aumenta cuando el aire está frío y húmedo. ¿Verdadero o falso?
+
+#A.Verdadero
+#B.Falso
+
+#13.1 Un globo asciende con una rapidez constante v=10m/s, en el instante que el globo se encuentra a una altura h=100m del suelo, se suelta una pelota. ¿En que instante la pelota y el globo están separados una distancia de 80 metros?
+
+#A. 2 segundos
+#B. 8 segundos
+#C. 4 segundos
+#D. 11 segundos
